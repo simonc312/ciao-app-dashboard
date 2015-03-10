@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+	<div class="sidebar-collapse">    
+		<ul class="nav navbar-nav sidebar-menu" id="navlist-custom">
+		<% if current_user.admin? %>
+		      <li class="active"><a href="#">Dashboard Reports</a></li>
+		      <li><a href="#">Manage Partners</a></li>
+		      <li><a href="#">Add New Partner</a></li>
+		<% end %>
+		<% if current_user.partner? %>
+		      <li class="active"><a href="#">Dashboard Reports</a></li>
+		      <li><a href="#">Manage Customers</a></li>
+		<% end %>
+	    </ul>
+	</div>
+<% end %>

@@ -1,0 +1,39 @@
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+  }
+
+.navbar-ciao {
+  float: left;
+  background-color: #e2242b; //ciao-red
+  border-color: #b70e12; //darker-red
+  color: white !important;
+}
+
+.navbar-ciao span{
+  color: white;
+}
+
+.navlist-custom {
+  margin: auto;
+  float:right;
+}
+
+.navlist-custom li {
+  display: inline;
+}
+
+.navlist-custom > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+
+#navlist-custom > li > a:hover, #navlist-custom > li > a:focus {
+  color: #777;
+  background-color:transparent;
+}
+
+#navbar-title {
+	margin: auto;
+}

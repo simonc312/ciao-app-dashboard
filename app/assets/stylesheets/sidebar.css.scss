@@ -1,0 +1,19 @@
+.sidebar-menu{
+  background-color: black; //ciao-red
+  border-color: white; //darker-red
+}
+
+.sidebar-menu>li>a{
+  text-align: center;
+  padding:10px 30px;
+  color: white;
+}
+
+.sidebar-menu{
+    width: 160px;
+    position:fixed;
+    top:50px;
+    left:0px;
+    height:100%;
+  }
+  

@@ -3,7 +3,7 @@ describe UserPolicy do
 
   let (:current_user) { FactoryGirl.build_stubbed :user }
   let (:other_user) { FactoryGirl.build_stubbed :user }
-  let (:admin) { FactoryGirl.build_stubbed :user, :admin }
+  let (:admin) { FactoryGirl.build_stubbed :user, :admin_role }
 
   permissions :index? do
     it "denies access if not an admin" do

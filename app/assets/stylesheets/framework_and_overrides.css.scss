@@ -7,14 +7,11 @@ img {
   @extend .img-responsive;
   margin: 0 auto;
   }
-// override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
-  }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
+
 .column {
   @extend .col-md-6;
   @extend .text-center;
@@ -34,11 +31,14 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
+  padding-left: 180px !important; //accommodate the sidebar
   @extend .container;
   background-color: #eee;
   padding-bottom: 80px;
+  padding-top: 20px;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
+  height: 100%;
+  margin-top: 100px; // accommodate the navbar
   }
 section {
   @extend .row;
