@@ -1,7 +1,7 @@
 # Feature: Sign up
-#   As a visitor
-#   I want to sign up
-#   So I can visit protected areas of the site
+#   As a Admin 
+#   I want to sign Partners up
+#   So I can add more Partners to Ciao platform 
 feature 'Sign Up', :devise do
 
   # Scenario: Visitor can sign up with valid email address and password

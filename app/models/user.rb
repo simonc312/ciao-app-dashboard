@@ -7,8 +7,16 @@ class User < ActiveRecord::Base
     self.role ||= :partner
   end
 
+  def confirmation_required?
+    if self.role == :admin
+      false
+    else 
+      true
+    end
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 end
