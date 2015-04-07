@@ -5,8 +5,8 @@
     <title><%= content_for?(:title) ? yield(:title) : "Rails Devise Pundit" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise Pundit" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag '//www.google.com/jspi' 'chartkick' %>
+    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag "//www.google.com/jspi", "chartkick" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
