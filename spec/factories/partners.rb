@@ -1,11 +1,12 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :partner do
-  	employee_size 500
-  	revenue_size "5 million"
-  	address "2011 Lincoln Ave"
-  	city "Berkeley"
-  	country "USA"
-  	zipcode 94709
-  	#user_attributes [:id,:name,:email,:password,:role,:roleable]
+  	employee_size Random.rand(2000)
+  	revenue_size Random.rand(2000)
+  	address Faker::Address.street_address
+  	city Random.rand(3)
+  	country Random.rand(3)
+  	zipcode Faker::Address.zip_code
   end
 end

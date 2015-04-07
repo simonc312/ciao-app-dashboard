@@ -4,11 +4,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @partners = Partner.all
     authorize User
   end
 
   def show
     @user = User.find(params[:id])
+    @partner = Partner.all
     authorize @user
   end
 
@@ -28,6 +30,10 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
+
+   def partner_revenue
+    render json: Partner.group(:country).sum(:revenue_size)
+   end
 
   private
 

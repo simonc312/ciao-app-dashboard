@@ -7,3 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+100.times do |k|
+	partner = FactoryGirl.create(:partner)
+	Random.rand(20).times do |k|
+		ciao = FactoryGirl.create(:ciaoappuser)
+		ciao.partner_id = partner.id
+		ciao.save!
+	end
+end
+puts 'CREATED 100 randomized partners and ciaoappusers.'

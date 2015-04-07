@@ -4,8 +4,8 @@ class CreatePartnerTable < ActiveRecord::Migration
     	t.integer :employee_size
     	t.integer :revenue_size
     	t.string :address
-    	t.string :city
-    	t.string :country
+    	t.integer :city
+    	t.integer :country
     	t.integer :zipcode
     	t.integer :channel_type_id
     	t.integer :retail_chain_id

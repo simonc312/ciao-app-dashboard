@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305021352) do
+ActiveRecord::Schema.define(version: 20150407094457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,15 +19,29 @@ ActiveRecord::Schema.define(version: 20150305021352) do
   create_table "admins", force: :cascade do |t|
   end
 
+  create_table "ciaoappusers", force: :cascade do |t|
+    t.integer  "country_code"
+    t.integer  "state_id"
+    t.integer  "gender"
+    t.integer  "is_active"
+    t.datetime "modified_at"
+    t.datetime "signed_up_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "partner_id"
+  end
+
   create_table "partners", force: :cascade do |t|
-    t.integer "employee_size"
-    t.integer "revenue_size"
-    t.string  "address"
-    t.string  "city"
-    t.string  "country"
-    t.integer "zipcode"
-    t.integer "channel_type_id"
-    t.integer "retail_chain_id"
+    t.integer  "employee_size"
+    t.integer  "revenue_size"
+    t.string   "address"
+    t.integer  "city"
+    t.integer  "country"
+    t.integer  "zipcode"
+    t.integer  "channel_type_id"
+    t.integer  "retail_chain_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
