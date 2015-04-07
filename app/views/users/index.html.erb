@@ -16,6 +16,7 @@
   </div>
 
   <div class="row">
+    <h4>Total Partner Revenue By Country</h4>
     <%= pie_chart @partners.group(:country).sum(:revenue_size)%>
     <div class="col-md-8 col-md-offset-2">
     </div>
