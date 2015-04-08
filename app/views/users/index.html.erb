@@ -13,12 +13,22 @@
         </tbody>
       </table>
     </div>
-  </div>
 
   <div class="row">
-    <h4>Total Partner Revenue By Country</h4>
-    <%= pie_chart @partners.group(:country).sum(:revenue_size)%>
-    <div class="col-md-8 col-md-offset-2">
+
+    <div class="col-md-4 col-md-offset-2">
+      <h4>User Stats</h4>
+      <%= bar_chart @users.group(:role).count.map{|k,v|[User.roles.keys[k].titleize,v]} %>
+    </div>
+
+    <div class="col-md-4 col-md-offset-2">
+      <h4>Total Partner Revenue By Country</h4>
+      <%= pie_chart @partners.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]} %>
+    </div>
+
+    <div class="col-md-4 col-md-offset-2">
+      <h4>Ciao App User Sign Up Count</h4>
+      <%= line_chart @ciaoappusers.group_by_week(:signed_up_at).count %>
     </div>
   </div>
 </div>

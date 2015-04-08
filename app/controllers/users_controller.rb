@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @partners = Partner.all
+    @ciaoappusers = Ciaoappuser.all
     authorize User
   end
 
@@ -33,6 +34,11 @@ class UsersController < ApplicationController
    def partner_revenue
     render json: Partner.group(:country).sum(:revenue_size)
    end
+
+   def ciao_app_user_sign_up
+    render json: Ciaoappuser.group_by_week(:signed_up_at).count
+   end
+
 
   private
 
