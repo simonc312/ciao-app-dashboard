@@ -8,11 +8,15 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
+Partner.delete_all
+puts 'deleted existing partners'
+Ciaoappuser.delete_all
+puts 'deleted existing Ciaoappusers'
 100.times do |k|
 	partner = FactoryGirl.create(:partner)
 	Random.rand(20).times do |k|
 		ciao = FactoryGirl.create(:ciaoappuser)
-		ciao.partner_id = partner.id
+		ciao.partner = partner
 		ciao.save!
 	end
 end

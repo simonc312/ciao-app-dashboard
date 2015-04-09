@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <%= render "users/dashboard_navigation" %>
+  </div>
+  <div class="row">
 
     <h3>Users</h3>
     <div class="column">
@@ -23,12 +26,13 @@
 
     <div class="col-md-4 col-md-offset-2">
       <h4>Total Partner Revenue By Country</h4>
-      <%= pie_chart @partners.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]} %>
+      <%= pie_chart "users/partner_revenue" %>
     </div>
 
     <div class="col-md-4 col-md-offset-2">
       <h4>Ciao App User Sign Up Count</h4>
-      <%= line_chart @ciaoappusers.group_by_week(:signed_up_at).count %>
+      <%= line_chart "users/ciao_app_user_sign_up" %>
     </div>
   </div>
 </div>
+

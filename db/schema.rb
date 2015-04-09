@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150407094457) do
     t.integer  "partner_id"
   end
 
+  add_index "ciaoappusers", ["partner_id"], name: "index_ciaoappusers_on_partner_id", using: :btree
+
   create_table "partners", force: :cascade do |t|
     t.integer  "employee_size"
     t.integer  "revenue_size"

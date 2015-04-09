@@ -1,5 +1,5 @@
 class AddPartnerIdToCiaoAppUsers < ActiveRecord::Migration
   def change
-  	add_column :ciaoappusers, :partner_id, :integer
+  	add_reference :ciaoappusers, :partner, index: true
   end
 end

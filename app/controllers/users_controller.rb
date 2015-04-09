@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   end
 
    def partner_revenue
-    render json: Partner.group(:country).sum(:revenue_size)
+    render json: Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
    end
 
    def ciao_app_user_sign_up
-    render json: Ciaoappuser.group_by_week(:signed_up_at).count
+    render json: Ciaoappuser.group(:gender).group_by_week(:signed_up_at).count.chart_json
    end
 
 
