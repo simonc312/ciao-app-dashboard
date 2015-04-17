@@ -2,7 +2,11 @@
 	<div class="sidebar-collapse">    
 		<ul class="nav navbar-nav sidebar-menu" id="navlist-custom">
 		<% if current_user.admin? %>
-		      <li class="active"><a href="#">Dashboard Reports</a></li>
+		      <li class="active">
+						<%= link_to 'Dashboard Reports', admin_dashboard_path %>
+		      <!-- 
+		      	<a href="<% admin_dashboard_path %>">Dashboard Reports</a> -->
+		      </li>
 		      <li><a href="#">Manage Partners</a></li>
 		      <li><a href="#">Add New Partner</a></li>
 		<% end %>

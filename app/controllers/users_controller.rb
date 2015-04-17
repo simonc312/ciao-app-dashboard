@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
+  helper_method :partner_renenue, :ciao_app_user_sign_up
 
   def index
     @users = User.all
@@ -31,13 +32,13 @@ class UsersController < ApplicationController
     redirect_to users_path, :notice => "User deleted."
   end
 
-   def partner_revenue
-    render json: Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
-   end
+  def partner_revenue
+  render json: Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
+  end
 
-   def ciao_app_user_sign_up
-    render json: Ciaoappuser.group(:gender).group_by_week(:signed_up_at).count.chart_json
-   end
+  def ciao_app_user_sign_up
+  render json: Ciaoappuser.group(:gender).group_by_week(:signed_up_at).count.chart_json
+  end
 
 
   private

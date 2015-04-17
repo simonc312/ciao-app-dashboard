@@ -1,5 +1,5 @@
 class AdminsController < UsersController
-  before_filter :ensure_admin!
+  before_filter :authenticate_user!, :ensure_admin!
 
   def index
     super
@@ -33,7 +33,7 @@ class AdminsController < UsersController
   end
 
   def ensure_admin!
-    unless @user.admin?
+    unless User.find(params[:id]).admin?
       sign_out current_user;
       redirect_to root_path;
       return false;

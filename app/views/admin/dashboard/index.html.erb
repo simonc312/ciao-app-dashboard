@@ -1,6 +1,132 @@
-<h1>Admin Dashboard</h1>
-<ul>
-	<li><%= link_to "Dashboard Reports"%></li>
-	<li><%= link_to "Manage Partners"%></li>
-	<li><%= link_to "Add New Partner"%></li>
-</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h1>Dashboard Reports</h1>
+		</div>
+		<div class="col-md-6">
+			<%= render "users/dashboard_navigation" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="user-filters" class="panel panel-info">
+			<div class="panel-heading"><h3>User Filters</h3></div>
+			<div class="panel-body">
+				<div class="col-md-3">
+					<h4>Country</h4>
+					<select name="country_code">
+							<%= Ciaoappuser.country_codes.keys.each_with_index do |country,index| %>
+								<option value="<%= index %>"><%= country.titleize %></option>
+							<% end %>
+					</select>
+
+					<h4>State</h4>
+					<select name="state_id">
+							<%= Ciaoappuser.state_ids.keys.each_with_index do |state,index| %>
+								<option value="<%= index %>"><%= state.upcase %></option>
+							<% end %>
+					</select>
+				</div>
+				<div class="col-md-4 vertical-divider">
+					<h4>Country</h4>
+					<select name="country_code">
+							<%= Ciaoappuser.country_codes.keys.each_with_index do |country,index| %>
+								<option value="<%= index %>"><%= country.titleize %></option>
+							<% end %>
+					</select>
+
+					<h4>Gender</h4>
+					<div class="btn-group btn-group-lg" data-toggle="buttons">
+					  <label class="btn active">
+					    <input type="radio" name="options" id="option1" autocomplete="off" checked> Both
+					  </label>
+					  <label class="btn">
+					    <input type="radio" name="options" id="option2" autocomplete="off"> 
+					    Male
+					  </label>
+					  <label class="btn">
+					    <input type="radio" name="options" id="option3" autocomplete="off"> Female
+					  </label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<h4>Aquisition Channel</h4>
+					<div class="btn-group btn-group-lg" data-toggle="buttons">
+					  <label class="btn active">
+					    <input type="radio" name="options" id="option1" autocomplete="off" checked> All
+					  </label>
+					  <label class="btn">
+					    <input type="radio" name="options" id="option2" autocomplete="off"> 
+					    Online
+					  </label>
+					  <label class="btn">
+					    <input type="radio" name="options" id="option3" autocomplete="off"> Offline
+					  </label>
+					  <label class="btn">
+					    <input type="radio" name="options" id="option3" autocomplete="off"> Organic
+					  </label>
+					</div>
+				</div>
+
+				<div class="col-md-3 panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				          Subchannels
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				      <ul class="list-group" role="menu">
+				      	<li role="presentation" class="list-group-item dropdown-header">Online</li> 
+						    <div class="checkbox">
+						      <label>
+						      <input type="checkbox"> Facebook Ads
+						      </label>
+						   </div>
+				        <li class="list-group-item"><a href="#">Opera Ads</a></li>
+				        <li class="list-group-item"><a href="#">Google Adwords</a></li>
+				        <li class="list-group-item divider"></li>
+				        <li class="list-group-item dropdown-header">Offline</li>
+				        <li class="list-group-item divider"></li>
+				        <li class="list-group-item dropdown-header">Organic</li>
+				      </ul>
+				    </div>
+				  </div>
+				</div>
+
+				<div class="dropdown btn-group btn-group-md">
+					<label type="button" id="subchannel-dropdown-menu" class="btn btn-primary">Subchannels
+		     	</label>
+		     	<button type="button" class="btn btn-primary dropdown-toggle" 
+			      data-toggle="dropdown">
+			      <span class="caret"></span>
+			      <span class="sr-only">Toggle Dropdown</span>
+				   </button>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="subchannel-dropdown-menu">
+		      	<li role="presentation" class="dropdown-header">Online</li> 
+				    <div class="checkbox">
+				      <label>
+				      <input type="checkbox"> Facebook Ads
+				      </label>
+				   </div>
+		        <li><a href="#">Opera Ads</a></li>
+		        <li><a href="#">Google Adwords</a></li>
+		        <li role="presentation" class="divider"></li>
+		        <li role="presentation" class="dropdown-header">Offline</li>
+		        <li role="presentation" class="divider"></li>
+		        <li role="presentation" class="dropdown-header">Organic</li>
+		      </ul>
+	    	</div>
+			</div>
+		</div>
+	
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+		      <h4>Ciao App User Sign Up Count</h4>
+		      <%= line_chart @ciaoappuser %>
+		</div>
+	</div>
+</div>

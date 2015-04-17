@@ -1,5 +1,5 @@
 /* the humans responsible & colophon */
-/* humanstxt.org */
+/* simonc312.github.io */
 
 
 /* TEAM */
