@@ -1,0 +1,22 @@
+<div class="col-md-4 vertical-divider">
+	<h4>Country</h4>
+	<select name="country_code">
+			<%= Ciaoappuser.country_codes.keys.each_with_index do |country,index| %>
+				<option value="<%= index %>"><%= country.titleize %></option>
+			<% end %>
+	</select>
+
+	<h4>Gender</h4>
+	<div class="btn-group btn-group-lg" data-toggle="buttons">
+	  <label class="btn active">
+	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Both
+	  </label>
+	  <label class="btn">
+	    <input type="radio" name="options" id="option2" autocomplete="off"> 
+	    Male
+	  </label>
+	  <label class="btn">
+	    <input type="radio" name="options" id="option3" autocomplete="off"> Female
+	  </label>
+	</div>
+</div>

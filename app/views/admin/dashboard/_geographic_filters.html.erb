@@ -1,0 +1,15 @@
+<div class="col-md-3">
+	<h4>Country</h4>
+	<select name="country_code">
+			<%= Ciaoappuser.country_codes.keys.each_with_index do |country,index| %>
+				<option value="<%= index %>"><%= country.titleize %></option>
+			<% end %>
+	</select>
+
+	<h4>State</h4>
+	<select name="state_id">
+			<%= Ciaoappuser.state_ids.keys.each_with_index do |state,index| %>
+				<option value="<%= index %>"><%= state.upcase %></option>
+			<% end %>
+	</select>
+</div>

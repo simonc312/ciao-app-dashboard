@@ -1,0 +1,70 @@
+<div class="col-md-4">	
+	<h4>Aquisition Channel</h4>
+	<div class="btn-group btn-group-lg" data-toggle="buttons">
+		<label class="btn active">
+		  <input type="radio" name="options" id="option1" autocomplete="off" checked> All
+		</label>
+		<label class="btn">
+		  <input type="radio" name="options" id="option2" autocomplete="off"> 
+		  Online
+		</label>
+		<label class="btn">
+		  <input type="radio" name="options" id="option3" autocomplete="off"> Offline
+		</label>
+		<label class="btn">
+		  <input type="radio" name="options" id="option3" autocomplete="off"> Organic
+		</label>
+	</div>
+</div>
+
+<div class="col-md-3 panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Subchannels
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <ul class="list-group" role="menu">
+      	<li role="presentation" class="list-group-item dropdown-header">Online</li> 
+		    <div class="checkbox">
+		      <label>
+		      <input type="checkbox"> Facebook Ads
+		      </label>
+		   </div>
+        <li class="list-group-item"><a href="#">Opera Ads</a></li>
+        <li class="list-group-item"><a href="#">Google Adwords</a></li>
+        <li class="list-group-item divider"></li>
+        <li class="list-group-item dropdown-header">Offline</li>
+        <li class="list-group-item divider"></li>
+        <li class="list-group-item dropdown-header">Organic</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown btn-group btn-group-md">
+	<label type="button" id="subchannel-dropdown-menu" class="btn btn-primary">Subchannels
+ 	</label>
+ 	<button type="button" class="btn btn-primary dropdown-toggle" 
+    data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+   </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="subchannel-dropdown-menu">
+  	<li role="presentation" class="dropdown-header">Online</li> 
+    <div class="checkbox">
+      <label>
+      <input type="checkbox"> Facebook Ads
+      </label>
+   </div>
+    <li><a href="#">Opera Ads</a></li>
+    <li><a href="#">Google Adwords</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation" class="dropdown-header">Offline</li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation" class="dropdown-header">Organic</li>
+  </ul>
+</div>
