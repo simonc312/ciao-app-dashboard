@@ -2,15 +2,50 @@
 
 #user-filters {
 
-	.vertical-divider {
+	.btn.active {
+		outline: none;
+		@extend .btn-primary.active;
+	}
+
+	#geographic-column{
+
+	}
+
+	#demographic-column{
+	
+	}
+
+
+
+}
+
+#acquisition-column{
+	.channel-width {
+		float: left;
+		width: 33.33%;
+	}
+}
+
+
+
+.clickable{
+	cursor:pointer;
+}
+
+.vertical-divider {
 	height: 80%;
 	margin: 0 9px;
-	border-left: 1px solid grey;
-	border-right: 1px solid grey;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
 	}
 
-	.btn.active {
-		@extend .btn-primary.active
+.col-centered{
+    float: none;
+    display: block;
+    margin: 0px auto;
 	}
 
+.col-small {
+	@extend .col-md-3;
+	@extend .text-center;
 }

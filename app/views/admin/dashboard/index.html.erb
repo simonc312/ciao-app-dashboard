@@ -16,10 +16,16 @@
 	    	<div class="row">
 					<%= render "admin/dashboard/user_filters" %>
 				</div>
+				<div class="row">
+					<%= render "admin/dashboard/ticker_bar"%>
+				</div>
+				<div class="row">
+					
+				</div>
 	    </div>
 	    <div role="tabpanel" class="tab-pane fade" id="marketing-metrics">
     		<div class="row">
-				<%= render "admin/dashboard/demographic_filters" %>
+				Marketing Metrics
 				</div>
 	    </div>
 	    <div role="tabpanel" class="tab-pane fade" id="user-metrics">
@@ -30,14 +36,5 @@
 	    </div>
 	  </div>
 
-	</div>
-
-	
-
-	<div class="row">
-		<div class="col-md-4 col-md-offset-2">
-		      <h4>Ciao App User Sign Up Count</h4>
-		      <%= line_chart @ciaoappuser %>
-		</div>
 	</div>
 </div>

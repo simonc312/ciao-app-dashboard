@@ -1,22 +1,18 @@
 <div class="col-md-4 vertical-divider">
-	<h4>Country</h4>
-	<select name="country_code">
-			<%= Ciaoappuser.country_codes.keys.each_with_index do |country,index| %>
-				<option value="<%= index %>"><%= country.titleize %></option>
-			<% end %>
-	</select>
-
+	<h4>Age</h4>
+	<%= number_field(:age,:lower_bound, in: 1..100, step: 1, default: 1) %> 
+	to
+	<%= number_field(:age,:upper_bound, in: 1..100, step: 1, default: 100) %> 
 	<h4>Gender</h4>
 	<div class="btn-group btn-group-lg" data-toggle="buttons">
-	  <label class="btn active">
+	  <button class="btn active">
 	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Both
-	  </label>
-	  <label class="btn">
-	    <input type="radio" name="options" id="option2" autocomplete="off"> 
-	    Male
-	  </label>
-	  <label class="btn">
-	    <input type="radio" name="options" id="option3" autocomplete="off"> Female
-	  </label>
+	  </button>
+	  <%= Ciaoappuser.genders.keys.each do |gender| %>
+		  <button class="btn">
+		    <%= radio_button_tag(:gender, gender) %>
+		    <%= gender.titleize %>
+		  </button>
+		  <% end %>
 	</div>
 </div>
