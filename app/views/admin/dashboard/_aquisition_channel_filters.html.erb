@@ -2,17 +2,17 @@
 	<div class="channel-width">	
 		<h4>Aquisition Channel</h4>
 		<div id="channel-types" class="btn-group btn-group-lg" data-toggle="buttons">
-			<button class="btn active">
+			<button class="btn active" value="all">
 			  <input type="radio" name="options" id="option1" autocomplete="off" checked> All
 			</button>
-			<button class="btn">
+			<button class="btn" value="online">
 			  <input type="radio" name="options" id="option2" autocomplete="off"> 
 			  Online
 			</button>
-			<button class="btn">
+			<button class="btn" value="offline">
 			  <input type="radio" name="options" id="option3" autocomplete="off"> Offline
 			</button>
-			<button class="btn">
+			<button class="btn" value="organic">
 			  <input type="radio" name="options" id="option3" autocomplete="off"> Organic
 			</button>
 		</div>
@@ -30,23 +30,27 @@
 	    </div>
 	    <div id="subchannel-collapse" class="panel-collapse collapse" role="tabpanel">
 	      <ul class="list-group" role="menu">
-	      	<li role="presentation" class="list-group-item dropdown-header">Online</li> 
-					<%= Ciaoappuser.online_channels.keys.each_with_index do |channel,index| %>
+	      	<li id="online" role="presentation" class="list-group-item dropdown-header">Online 
+					<% Ciaoappuser.online_channels.keys.each_with_index do |channel,index| %>
 						<div class="list-group-item checkbox">
 				      <label>
-				      	<input type="checkbox"> <%= channel.titleize %></input>
+				      	<%= check_box_tag("online_channels[]",1,:include_blank, {class: "inline", autocomplete: "off"})%>
+				      	<%= channel.titleize %>
 				      </label>
 						</div>
 					<% end %>
-	        <li class="list-group-item dropdown-header">Offline</li>
-	        <%= Ciaoappuser.offline_channels.keys.each_with_index do |channel,index| %>
+					</li>
+	        <li id="offline" class="list-group-item dropdown-header">Offline
+	        <% Ciaoappuser.offline_channels.keys.each_with_index do |channel,index| %>
 						<div class="list-group-item checkbox">
 				      <label>
-				      	<input type="checkbox"> <%= channel.titleize %></input>
+				      	<%= check_box_tag("offline_channels[]",1,:include_blank, { autocomplete: "off"}) %>
+				      	<%= channel.titleize %>
 				      </label>
 						</div>
 					<% end %>
-	        <li class="list-group-item dropdown-header">Organic</li>
+					</li>
+	        <li id="organic" class="list-group-item dropdown-header">Organic</li>
 	      </ul>
 	    </div>
 	  </div>

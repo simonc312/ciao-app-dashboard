@@ -1,16 +1,16 @@
 <div class="col-md-4 vertical-divider">
 	<h4>Age</h4>
-	<%= number_field(:age,:lower_bound, in: 1..100, step: 1, default: 1) %> 
+	<%= number_field(:age,:lower_bound, in: 1..100, step: 1, value: 1, autocomplete: "off") %> 
 	to
-	<%= number_field(:age,:upper_bound, in: 1..100, step: 1, default: 100) %> 
+	<%= number_field(:age,:upper_bound, in: 1..100, step: 1, value: 100, autocomplete: "off") %> 
 	<h4>Gender</h4>
 	<div class="btn-group btn-group-lg" data-toggle="buttons">
 	  <button class="btn active">
 	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Both
 	  </button>
-	  <%= Ciaoappuser.genders.keys.each do |gender| %>
+	  <% Ciaoappuser.genders.keys.each do |gender| %>
 		  <button class="btn">
-		    <%= radio_button_tag(:gender, gender) %>
+		    <%= radio_button_tag(:gender, gender, autocomplete: "off") %>
 		    <%= gender.titleize %>
 		  </button>
 		  <% end %>
