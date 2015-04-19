@@ -6,5 +6,6 @@ class Ciaoappuser < ActiveRecord::Base
   enum gender: [:male, :female]
   enum online_channels: [:facebook_ads, :google_adwords, :opera_ad_network, :fyver_ads]
 	enum offline_channels: [:grocery_store, :repair_shop, :electronics_store, :discount_store, :other]
-
+	enum graph_types: [:total_revenue, :average_revenue, :total_costs, :net_income]
+	enum graph_frequency: [:yearly,:monthly,:weekly,:daily]
 end

@@ -1,5 +1,19 @@
-<div id="ticker-bar" class="panel">
-	<div class="panel-heading"><h3>Graph Bar</h3></div>
+<div id="graph-bar" class="panel">
+	<div class="panel-heading inline"><h3>Graph Bar</h3>
+		Show
+		<select name="graph_type">
+			<% Ciaoappuser.graph_types.keys.each_with_index do |graph,index| %>
+				<option value="<%= index %>"><%= graph.titleize %></option>
+			<% end %>
+		</select>
+		Frequency
+		<select name="graph_frequency">
+			<% Ciaoappuser.graph_frequencies.keys.each_with_index do |frequency,index| %>
+				<option value="<%= index %>"><%= frequency.titleize %></option>
+			<% end %>
+		</select>
+		
+	</div>
 	<div class="panel-body">
 			<div class="col-md-6">
 				<h4>Total Revenue</h4>

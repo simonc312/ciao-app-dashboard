@@ -8,6 +8,10 @@ img {
   margin: 0 auto;
   }
 
+a, button, input {
+  outline: 0 !important;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -31,6 +35,7 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
+  outline: 0 !important;
   padding-left: 180px !important; //accommodate the sidebar
   @extend .container;
   background-color: #eee;

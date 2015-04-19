@@ -9,18 +9,16 @@
 	</div>
 
 	<div class="row">
-
+		<%= render "admin/dashboard/user_filters" %>
+	</div>
 			<!-- Tab panes -->
 	  <div class="tab-content">
 	    <div role="tabpanel" class="tab-pane fade in active" id="profit-loss-metrics">
-	    	<div class="row">
-					<%= render "admin/dashboard/user_filters" %>
-				</div>
 				<div class="row">
 					<%= render "admin/dashboard/ticker_bar"%>
 				</div>
 				<div class="row">
-					
+					<%= render "admin/dashboard/graph_bar"%>
 				</div>
 	    </div>
 	    <div role="tabpanel" class="tab-pane fade" id="marketing-metrics">
