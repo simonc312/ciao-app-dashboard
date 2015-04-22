@@ -1,0 +1,26 @@
+<div id="fixedCostModal" class="modal fade" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Total Fixed Costs</h4>
+      </div>
+      <%= form_for(@totalFixedCosts, url: admin_dashboard_update_fixed_costs_path) do |f| %>
+				<div class="modal-body modal-body-padding">
+					<% FixedCost.costs.keys.each do |cost|%>
+						<div class= "input-label col-md-4"><span><%= cost.titleize %></span></div>
+					  <div class="input-group col-md-8">
+							<span class="input-group-addon">$</span>
+							<%= f.text_field(cost, placeholder: "", class:"form-control")%>
+						</div>
+
+					<% end %>
+	      </div>
+	      <div class="modal-footer">
+	        <%= button_tag("Close",class: "btn btn-default", data: {dismiss:"modal"})%>
+	        <%= f.submit("Save Changes", class: "btn btn-primary")%>
+	      </div>
+	     <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

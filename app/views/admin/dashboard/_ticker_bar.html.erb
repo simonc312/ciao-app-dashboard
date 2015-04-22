@@ -3,24 +3,21 @@
 	<div class="panel-body">
 			<div class="col-small">
 				<h5>Total Revenue</h5>
-				<h4><%= @totalRevenue %></h4>
+				<h4>$<%= @totalRevenue %></h4>
 			</div>
 			<div class="col-small">
 				<h5>Average Revenue Per User</h5>
-				<h4><%= @averageRevenue %></h4>
+				<h4>$<%= @averageRevenue %></h4>
 			</div>
 			<div class="col-small">
-				<h5>Total Costs</h5>
-				<h4><%= @totalCosts %></h4>
+				<h5>Total Costs <a id="edit_total_costs" href=""> (edit)</a></h5>
+				<%= render "admin/dashboard/edit_costs" %>
+				<h4>$<%= @totalCosts %></h4>
 			</div>
 			<div class="col-small">
 				<h5>Net Income</h5>
-				<h4>
-					<div class="input-group">
-         		<span class="input-group-addon">$</span>
-         		<input type="text" class="form-control" placeholder="Enter Amount Here">
-      		</div>
-    	</h4>
+				<h4>$<%= @totalRevenue - @totalCosts %>
+    		</h4>
 			</div>
 	</div>
 </div>

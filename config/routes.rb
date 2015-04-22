@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :partners, except: [:index] 
 
   namespace :admin do 
-    get 'dashboard', to: 'dashboard#index', as: '/dashboard' 
+    get 'dashboard', to: 'dashboard#index', as: '/dashboard'
+    patch 'dashboard/update-fixed-costs', to: 'dashboard#update_fixed_costs', as: '/dashboard/update-fixed-costs' 
   end
 
   namespace :partner do 
