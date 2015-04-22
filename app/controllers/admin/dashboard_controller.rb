@@ -27,6 +27,10 @@ class Admin::DashboardController < ApplicationController
     end
   end
 
+  def update_user_filters
+    redirect_to admin_dashboard_path, :notice => "User Filters updated."
+  end
+
   def partner_revenue
     render json: Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
   end

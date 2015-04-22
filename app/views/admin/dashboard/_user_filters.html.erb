@@ -1,7 +1,8 @@
 <div class="panel-group" id="user-filters">
 	<div class="panel panel-info">
+		<%= form_tag(:action => "update_user_filters", :method => "post") do %>
     <div class="panel-heading" id="user-filter-header">
-      <h4 class="panel-title">
+      <div class="panel-title">
       	<h3>
         	<span class="clickable" data-target="#user-filter-collapse" data-parent="user-filters" data-toggle="collapse">
           			User Filters 
@@ -10,7 +11,7 @@
         	</span>
       		<%= button_tag("Update",class: "btn btn-primary")%>
     		</h3>
-      </h4>
+      </div>
     </div>
     <div id="user-filter-collapse" class="panel-collapse collapse" role="tabpanel">
       <div class="panel-body" role="menu">
@@ -23,5 +24,6 @@
       	
       </div>
     </div>
+    <% end %>
   </div>
 </div>
