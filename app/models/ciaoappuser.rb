@@ -20,7 +20,7 @@ class Ciaoappuser < ActiveRecord::Base
 	include Filterable 
 	scope :country_code, -> (country_code) { where country_code: country_code }
   scope :state_id, -> (state_id) { where state_id: state_id }
-  scope :gender, -> (gender) { where gender: gender }
+  scope :gender, -> (gender) { gender === "both" ? nil : (where gender: gender) }
   scope :age, -> (age) { where date_of_birth:  (Time.now - age["upper_bound"].to_i.years)..(Time.now - age["lower_bound"].to_i.years) }
 
   belongs_to :partner, inverse_of: :ciaoappusers

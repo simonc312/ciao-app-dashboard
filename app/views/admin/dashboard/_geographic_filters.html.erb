@@ -1,7 +1,7 @@
 <div class="col-md-3">
 	<h4>Country</h4>
-	<%= select_tag("country_code",options_for_select(Ciaoappuser.titleize_country_codes)) %>
+	<%= select_tag("country_code",options_for_select(Ciaoappuser.titleize_country_codes,params[:country_code])) %>
 
 	<h4>State</h4>
-		<%= select_tag("state_id",options_for_select(Ciaoappuser.upcase_state_ids)) %>
+		<%= select_tag("state_id",options_for_select(Ciaoappuser.upcase_state_ids,params[:state_id])) %>
 </div>

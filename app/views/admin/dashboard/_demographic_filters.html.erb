@@ -1,18 +1,32 @@
 <div class="col-md-4">
 	<h4>Age</h4>
-	<%= number_field(:age,:lower_bound, in: 1..100, step: 1, value: 1, autocomplete: "off") %> 
+	<%= number_field(:age,:lower_bound, in: 1..100, step: 1, autocomplete: "off", value: params[:age] ? params[:age]["lower_bound"] : 1) %> 
 	to
-	<%= number_field(:age,:upper_bound, in: 1..100, step: 1, value: 100, autocomplete: "off") %> 
+	<%= number_field(:age,:upper_bound, in: 1..100, step: 1, autocomplete: "off",value: params[:age] ? params[:age]["upper_bound"] : 100 ) %> 
 	<h4>Gender</h4>
 	<div class="btn-group btn-group-lg" data-toggle="buttons">
-	  <button class="btn active">
-	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Both
-	  </button>
-	  <% Ciaoappuser.genders.keys.each do |gender| %>
-		  <button class="btn">
-		    <%= radio_button_tag(:gender, gender, autocomplete: "off") %>
-		    <%= gender.titleize %>
-		  </button>
+		<% active_gender_index = params[:gender] ? params[:gender] : "both" %>
+			<% if active_gender_index == "both" %>
+			  <button class="btn active">
+			    <%= radio_button_tag(:gender, "both", true, autocomplete: "off") %>Both
+			  </button>
+		  <% else %>
+		  	<button class="btn">
+		    	<%= radio_button_tag(:gender, "both", false, autocomplete: "off") %>Both
+		  	</button>
+		  <% end %>
+	  <% Ciaoappuser.genders.keys.each_with_index do |gender,index| %>
+		  	<% if active_gender_index == index.to_s %>
+				  <button class="btn active">
+				    <%= radio_button_tag(:gender, index, true ,autocomplete: "off") %>
+				    <%= gender.titleize %>
+				  </button>
+				<% else %>
+					<button class="btn">
+			    	<%= radio_button_tag(:gender, index, false ,autocomplete: "off") %>
+			    	<%= gender.titleize %>
+			  	</button>
+				<% end %>
 		  <% end %>
 	</div>
 </div>

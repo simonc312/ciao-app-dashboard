@@ -4,7 +4,7 @@
     <div class="panel-heading" id="user-filter-header">
       <div class="panel-title">
       	<h3>
-        	<span class="clickable" data-target="#user-filter-collapse" data-parent="user-filters" data-toggle="collapse">
+        	<span class="clickable" data-target="#user-filter-collapse" data-parent="user-filters" data-toggle="collapse" aria-expanded="true" aria-controls="user-filter-collapse">
           			User Filters 
           			<span class="caret"></span> 
           			
@@ -13,7 +13,7 @@
     		</h3>
       </div>
     </div>
-    <div id="user-filter-collapse" class="panel-collapse collapse" role="tabpanel" aria-expanded="true">
+    <div id="user-filter-collapse" class="panel-collapse collapse in" role="tabpanel" >
       <div class="panel-body" role="menu">
 
       	<%= render "admin/dashboard/geographic_filters"%>
