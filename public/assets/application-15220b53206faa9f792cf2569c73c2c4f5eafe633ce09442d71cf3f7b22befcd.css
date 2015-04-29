@@ -1972,7 +1972,7 @@ mark,
 }
 
 /* line 92, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_type.scss */
-.text-center {
+.text-center, .col-small {
   text-align: center;
 }
 
@@ -2407,7 +2407,7 @@ pre code {
 }
 
 /* line 11, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-small, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -2937,7 +2937,7 @@ pre code {
 }
 @media (min-width: 992px) {
   /* line 27, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-small, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
 
@@ -2952,7 +2952,7 @@ pre code {
   }
 
   /* line 35, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-md-3 {
+  .col-md-3, .col-small {
     width: 25%;
   }
 
@@ -8568,13 +8568,50 @@ button.close {
   }
 }
 /* line 5, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
-#user-filters .vertical-divider {
-  height: 80%;
-  margin: 0 9px;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
+#user-filters #user-filter-header {
+  background-color: #DAECF6;
+}
+/* line 9, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+#user-filters .btn.active {
+  outline: none;
 }
 
+/* line 27, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+#acquisition-column .channel-width {
+  float: left;
+  width: 33.33%;
+}
+
+/* line 35, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+#ticker-bar .modal-body-padding .input-group, #ticker-bar .modal-body-padding .input-label {
+  padding: 5px;
+}
+/* line 39, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+#ticker-bar .modal-body-padding .input-label span {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* line 45, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+.clickable {
+  cursor: pointer;
+}
+
+/* line 49, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+.vertical-divider {
+  height: 80%;
+  margin: 0 9px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+/* line 56, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/dashboard-report.css.scss */
+.col-centered {
+  float: none;
+  display: block;
+  margin: 0px auto;
+}
+@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /* line 9, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_normalize.scss */
 html {
@@ -8949,8 +8986,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("/assets/bootstrap/glyphicons-halflings-regular-31f60a4c3845343d551def3adc602a10.eot");
-  src: url("/assets/bootstrap/glyphicons-halflings-regular-31f60a4c3845343d551def3adc602a10.eot?#iefix") format("embedded-opentype"), url("/assets/bootstrap/glyphicons-halflings-regular-3b21d33cc4addb2ebfe7f625dad8559b.woff2") format("woff2"), url("/assets/bootstrap/glyphicons-halflings-regular-4c18eb6f51df3274f7d02dcd79043b73.woff") format("woff"), url("/assets/bootstrap/glyphicons-halflings-regular-b491e790954a68a98fde7e4977dca71f.ttf") format("truetype"), url("/assets/bootstrap/glyphicons-halflings-regular-71e812deb5287605b01eb3549744d0cc.svg#glyphicons_halflingsregular") format("svg");
+  src: url("/assets/bootstrap/glyphicons-halflings-regular-13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407.eot");
+  src: url("/assets/bootstrap/glyphicons-halflings-regular-13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407.eot?#iefix") format("embedded-opentype"), url("/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2") format("woff2"), url("/assets/bootstrap/glyphicons-halflings-regular-a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742.woff") format("woff"), url("/assets/bootstrap/glyphicons-halflings-regular-e395044093757d82afcb138957d06a1ea9361bdcf0b442d06a18a8051af57456.ttf") format("truetype"), url("/assets/bootstrap/glyphicons-halflings-regular-42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5.svg#glyphicons_halflingsregular") format("svg");
 }
 /* line 22, /home/simonc312/.gem/ruby/2.1.3/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -17285,8 +17322,14 @@ img {
   margin: 0 auto;
 }
 
-/* line 33, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 11, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+a, button, input {
+  outline: 0 !important;
+}
+
+/* line 37, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 main {
+  outline: 0 !important;
   padding-left: 180px !important;
   background-color: #eee;
   padding-bottom: 80px;
@@ -17296,29 +17339,29 @@ main {
   margin-top: 50px;
 }
 
-/* line 43, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 48, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 section {
   margin-top: 20px;
 }
 
-/* line 51, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 56, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 .authform {
   padding-top: 30px;
   max-width: 620px;
   margin: 0 auto;
 }
 
-/* line 56, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 61, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 .authform form {
   padding-bottom: 40px;
 }
 
-/* line 59, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 64, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 .authform .right {
   float: right !important;
 }
 
-/* line 73, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
+/* line 78, /home/simonc312/Github/CiaoAppDashboard/rails-devise-pundit/app/assets/stylesheets/framework_and_overrides.css.scss */
 #error_explanation h2 {
   font-size: 16px;
 }
