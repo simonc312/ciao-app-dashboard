@@ -4,13 +4,24 @@ $('document').ready(function(){
 		
 		var channel_type = $(this).attr('value');
 		
+/* Experimental for of loop doesn't compile to heroku
+
 		for(type of channels){
 			if(channel_type === 'all' || channel_type === type){
 				$('#subchannel-collapse #'+type).show();
 			}
 			else
 				$('#subchannel-collapse #'+type).hide();
+		}*/
+
+	for(var i=0; i<channels.length;i++){
+		var type = channels[i];
+		if(channel_type === 'all' || channel_type === type){
+			$('#subchannel-collapse #'+type).show();
 		}
+		else
+			$('#subchannel-collapse #'+type).hide();
+	}	
 		
 	};
 	$('#channel-types button').click(update_subchannels);
