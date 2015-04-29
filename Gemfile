@@ -36,6 +36,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 group :test do
   gem 'capybara'
