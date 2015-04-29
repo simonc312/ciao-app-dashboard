@@ -2,7 +2,7 @@ class Admin::DashboardController < ApplicationController
   helper_method :partner_revenue, :ciao_app_user_sign_up
   before_filter :ensure_admin!
   def index
-    ap params
+    #ap params
   	@ciaoappuser = Ciaoappuser.filter(user_filter_params).group_by_week(:signed_up_at).count
     @totalRevenue = Partner.sum(:revenue_size);
     @averageRevenue = @totalRevenue / Partner.count;
@@ -29,7 +29,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def update_user_filters
-    ap params
+    #ap params
     redirect_to admin_dashboard_path(user_filter_params), :notice => "User Filters updated."
   end
 
