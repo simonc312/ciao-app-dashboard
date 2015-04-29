@@ -20,6 +20,7 @@ gem 'bootstrap_form'
 gem 'devise'
 gem 'pundit'
 group :development do
+  gem 'awesome_print'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'

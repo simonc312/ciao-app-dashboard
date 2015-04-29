@@ -2,7 +2,8 @@ class Admin::DashboardController < ApplicationController
   helper_method :partner_revenue, :ciao_app_user_sign_up
   before_filter :ensure_admin!
   def index
-  	@ciaoappuser = Ciaoappuser.group(:gender).group_by_week(:signed_up_at).count
+    ap params
+  	@ciaoappuser = Ciaoappuser.filter(user_filter_params).group_by_week(:signed_up_at).count
     @totalRevenue = Partner.sum(:revenue_size);
     @averageRevenue = @totalRevenue / Partner.count;
     @totalFixedCosts = current_user.roleable.currentFixedCosts();
@@ -28,7 +29,8 @@ class Admin::DashboardController < ApplicationController
   end
 
   def update_user_filters
-    redirect_to admin_dashboard_path, :notice => "User Filters updated."
+    ap params
+    redirect_to admin_dashboard_path(user_filter_params), :notice => "User Filters updated."
   end
 
   def partner_revenue
@@ -49,5 +51,13 @@ class Admin::DashboardController < ApplicationController
 
     def fixed_cost_params
       params.require(:fixed_cost).permit(:salaries,:rent,:server_hosting,:misc);
+    end
+
+    def user_filter_params
+      params.slice(:country_code, :state_id, :gender,:age)
+    end
+
+    def partner_filter_params
+      params.slice(:online_channels,:offline_channels)
     end
 end
