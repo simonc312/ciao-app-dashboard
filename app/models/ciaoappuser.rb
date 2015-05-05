@@ -1,6 +1,10 @@
 class CiaoappuserDynamicMethodFinder
-  attr_accessor :attribute, :action
+  attr_accessor :attribute, :action, :subaction
   def initialize(method_sym)
+    if method_sym.to_s =~ /^keep_(.*)$/
+    	method_sym = $1.to_sym
+    	@subaction = "same"
+    end
     if method_sym.to_s =~ /^titleize_(.*)$/
       @attribute = $1.to_sym
       @action = "titleize"
@@ -8,11 +12,15 @@ class CiaoappuserDynamicMethodFinder
       @attribute = $1.to_sym
       @action = "upcase"
     end
-
   end
   
   def match?
     @attribute != nil
+  end
+
+  def subaction(key,value)
+  	key_action = key.send(@action)
+  	@subaction === "same" ? [key_action,key_action] : [key_action,value]
   end
 end
 
@@ -30,13 +38,14 @@ class Ciaoappuser < ActiveRecord::Base
   enum gender: [:male, :female]
   enum online_channels: [:facebook_ads, :google_adwords, :opera_ad_network, :fyver_ads]
 	enum offline_channels: [:grocery_store, :repair_shop, :electronics_store, :discount_store, :other]
-	enum graph_types: [:total_revenue, :average_revenue, :total_costs, :net_income]
+	enum graph_types: [:bar_chart, :pie_chart, :line_chart]
+	enum graph_values: [:total_revenue, :average_revenue, :total_costs, :net_income]
 	enum graph_frequency: [:yearly,:monthly,:weekly,:daily]
 
 	def self.method_missing(method_sym, *arguments, &block)
     match = CiaoappuserDynamicMethodFinder.new(method_sym)
     if match.match?
-      Ciaoappuser.send(match.attribute).map {|key,value| [key.send(match.action),value]}
+      Ciaoappuser.send(match.attribute).map {|key,value| match.subaction(key,value)}
     else
       super
     end

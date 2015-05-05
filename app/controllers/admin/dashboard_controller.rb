@@ -3,11 +3,13 @@ class Admin::DashboardController < ApplicationController
   before_filter :ensure_admin!
   def index
     #ap params
-  	@ciaoappuser = Ciaoappuser.filter(user_filter_params).group_by_week(:signed_up_at).count
-    @totalRevenue = Partner.sum(:revenue_size);
-    @averageRevenue = @totalRevenue / Partner.count;
-    @totalFixedCosts = current_user.roleable.currentFixedCosts();
-    @totalCosts = @totalRevenue / 3 + @totalFixedCosts.sumCosts();
+    Admin.admarvel_site_report_call()
+  	@ciaoappuser = Ciaoappuser.filter(user_filter_params).count
+    @partner = Partner.filter(partner_filter_params)
+    @totalRevenue = @partner.sum(:revenue_size)
+    @averageRevenue = @totalRevenue / Partner.count #make this reflect the actual subset of partners 
+    @totalFixedCosts = current_user.roleable.currentFixedCosts()
+    @totalCosts = @totalRevenue / 3 + @totalFixedCosts.sumCosts()
   end
 
   def create_partner
@@ -33,6 +35,11 @@ class Admin::DashboardController < ApplicationController
     redirect_to admin_dashboard_path(user_filter_params), :notice => "User Filters updated."
   end
 
+  def update_graph_filters
+    ap params
+    redirect_to admin_dashboard_path(partner_filter_params), :notice => "Graph Bar Filters updated."
+  end
+
   def partner_revenue
     render json: Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
   end
@@ -50,7 +57,7 @@ class Admin::DashboardController < ApplicationController
     end
 
     def fixed_cost_params
-      params.require(:fixed_cost).permit(:salaries,:rent,:server_hosting,:misc);
+      params.require(:fixed_cost).permit(:salaries,:rent,:server_hosting,:misc)
     end
 
     def user_filter_params
@@ -58,6 +65,6 @@ class Admin::DashboardController < ApplicationController
     end
 
     def partner_filter_params
-      params.slice(:online_channels,:offline_channels)
+      params.slice(:online_channels,:offline_channels,:graph_frequency,:graph_value)
     end
 end

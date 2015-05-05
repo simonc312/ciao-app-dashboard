@@ -1,23 +1,22 @@
 <div id="graph-bar" class="panel">
 	<div class="panel-heading inline"><h3>Graph Bar</h3>
+		<%= form_tag(:action => "update_graph_filters", :method => "post") do %>
 		Show
-		<select name="graph_type">
-			<% Ciaoappuser.graph_types.keys.each_with_index do |graph,index| %>
-				<option value="<%= index %>"><%= graph.titleize %></option>
-			<% end %>
-		</select>
+		<%= select_tag("graph_type", options_for_select(Ciaoappuser.keep_titleize_graph_types,params[:graph_type])) %>
+		Value
+		<%= select_tag("graph_value", options_for_select(Ciaoappuser.keep_titleize_graph_values,params[:graph_value])) %>
 		Frequency
-		<select name="graph_frequency">
-			<% Ciaoappuser.graph_frequencies.keys.each_with_index do |frequency,index| %>
-				<option value="<%= index %>"><%= frequency.titleize %></option>
-			<% end %>
-		</select>
-		
+		<%= select_tag("graph_frequency", options_for_select(Ciaoappuser.keep_titleize_graph_frequencies,params[:graph_frequency])) %>
+
+		<%= button_tag("Update",class: "btn btn-primary") %>
+		<% end %>
 	</div>
 	<div class="panel-body">
 			<div class="col-md-6">
-				<h4>Total Revenue</h4>
-		      <%= bar_chart @ciaoappuser %>
+				<h4><%= params[:graph_value] ?  params[:graph_value] : "Total Revenue" %> | 
+				<small><%= params[:graph_frequency] ?  params[:graph_frequency] : "Weekly" %></small>
+				</h4>
+		      <%= params[:graph_type] ? send(params[:graph_type], @partner) : bar_chart(@partner) %>
 			</div>
 			<div class="col-md-4">
 				<h4>Ciao App User Sign Up Count</h4>

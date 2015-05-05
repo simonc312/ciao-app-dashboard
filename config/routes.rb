@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: '/dashboard'
     post 'dashboard/update-user-filters', to: 'dashboard#update_user_filters', as:'/dashboard/update-user-filters'
     patch 'dashboard/update-fixed-costs', to: 'dashboard#update_fixed_costs', as: '/dashboard/update-fixed-costs' 
+    post 'dashboard/update-graph-filters', to: 'dashboard#update_graph_filters', as:'/dashboard/update-graph-filters'
   end
 
   namespace :partner do 
