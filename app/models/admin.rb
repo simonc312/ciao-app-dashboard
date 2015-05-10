@@ -1,8 +1,12 @@
 require 'open-uri'
 require 'csv'
-
+require 'uri'
 CSV::Converters[:blank_to_nil] = lambda do |field|
 	field && field.empty? ? nil : field
+end
+
+CSV::Converters[:currency_to_int] = lambda do |field|
+	field && field =~ /^\$ (.*)$/ ? $1.to_f : field
 end
 
 class Admin < ActiveRecord::Base
@@ -11,23 +15,25 @@ class Admin < ActiveRecord::Base
   has_many :ciaoappusers, through: :partners
   has_one :user, as: :roleable, dependent: :destroy
   accepts_nested_attributes_for :user, allow_destroy: true
- 
+  #Report = Struct.new(*(Admin.admarvel_headers.map &:to_sym)); #turn array of strings to symbols then use as arguments
+
   def currentFixedCosts
   	#find the first fixedCosts created this month otherwise create it.
   	return self.fixed_costs.find_or_create_by(created_at: (Time.now - 30.day)..Time.now);
   end
 
-  def self.admarvel_headers
-  	["Date", "Advertiser/Ad Network Name", "Campaign Name",	"Site ID",	"Site Name",	"Publisher ID",	"Publisher Name",	"Requests",	"Impressions",	"Fill Rate",	"Clicks",	"CTR",	"eCPM",	"Revenue"]
-  end
-
-  def self.admarvel_site_report_call
-		url = 'http://map.admarvel.com/reports?type=site&uname=ciaomgr_api&upassword=ciao123&date_start=2015-02-10&date_end=2015-02-20&sids=95958'
-		open(url) do |file|
-			output_csv = CSV.new(file.read,:headers => Admin.admarvel_headers,:header_converters => :symbol, :converters => [:all, :blank_to_nil])
-			ap output_csv.to_a.map{|site_entry| 
-				site_entry
-			}
-		end 
+  def admarvel_site_report_call(query)
+		output_csv = {}
+		url = Admarvel.new(query).site_report_url
+		ap url
+		body = open(url).read 
+		output_csv = CSV.new(body,:headers => Admarvel.site_headers,:header_converters => :symbol, :converters => [:all, :blank_to_nil, :currency_to_int])
+		output_csv = output_csv.to_a[2...-1]
+		output_csv = output_csv.map {|data|
+			AdmarvelReport.new(data)
+		}
+		output_csv =  output_csv.group_by {|report| report.campaign_name }
+		ap output_csv
+		return output_csv.each{|key,value| output_csv[key] = value.map{|r| r.revenue}.reduce(:+)}
 	end
 end

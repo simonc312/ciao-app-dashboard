@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429063849) do
+ActiveRecord::Schema.define(version: 20150510064948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
   end
+
+  create_table "api_requests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "url",        null: false
+  end
+
+  add_index "api_requests", ["url"], name: "index_api_requests_on_url", unique: true, using: :btree
 
   create_table "ciaoappusers", force: :cascade do |t|
     t.integer  "country_code"

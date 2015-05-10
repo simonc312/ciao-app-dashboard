@@ -3,7 +3,7 @@ class Admin::DashboardController < ApplicationController
   before_filter :ensure_admin!
   def index
     #ap params
-    Admin.admarvel_site_report_call()
+    @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-02-10", end: "2015-02-20"}, site_ids: "95958"})
   	@ciaoappuser = Ciaoappuser.filter(user_filter_params).count
     @partner = Partner.filter(partner_filter_params)
     @totalRevenue = @partner.sum(:revenue_size)
@@ -36,7 +36,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def update_graph_filters
-    ap params
+    #ap params
     redirect_to admin_dashboard_path(partner_filter_params), :notice => "Graph Bar Filters updated."
   end
 
