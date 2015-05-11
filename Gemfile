@@ -10,15 +10,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'figaro'
 gem 'chartkick'
 gem 'groupdate'
+gem 'bootstrap-sass'
+gem 'bootstrap_form'
+gem 'devise'
+gem 'pundit'
+gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-gem 'bootstrap-sass'
-gem 'bootstrap_form'
-gem 'devise'
-gem 'pundit'
+
 group :development do
   gem 'awesome_print'
   gem 'better_errors'
