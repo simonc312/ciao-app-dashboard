@@ -7,7 +7,7 @@
 		<%= select_tag("graph_value", options_for_select(Ciaoappuser.keep_titleize_graph_values,params[:graph_value])) %>
 		Frequency
 		<%= select_tag("graph_frequency", options_for_select(Ciaoappuser.keep_titleize_graph_frequencies, [3,"Weekly"])) %>
-		<%= react_component('DateRangePickerComponent', startDate: '4/01/15', endDate:'5/01/15') %>
+		<%= react_component('DateRangePicker', startDate: '4/01/15', endDate:'5/01/15') %>
 		<%= button_tag("Update",class: "btn btn-primary") %>
 		<% end %>
 	</div>

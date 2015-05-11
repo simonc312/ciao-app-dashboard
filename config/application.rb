@@ -34,5 +34,12 @@ module RailsDevisePundit
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    #help debugging when using browserify 
+    config.browserify_rails.source_map_environments << "development"
+
+
+    #allow .js.jsx to be transformed by reactify 
+    config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\"" 
   end
 end

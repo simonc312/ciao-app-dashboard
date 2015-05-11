@@ -14,8 +14,8 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'devise'
 gem 'pundit'
-gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
-gem 'browserify-rails'
+gem 'react-rails', "~> 1.0"
+gem "browserify-rails", "~> 0.9.1"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -30,16 +30,16 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec-rails'
-  gem 'pg'
 end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+
+group :development, :test, :production do
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'pg'
+end 
+group :production do
+  gem 'rails_12factor'
 end
 group :test do
   gem 'capybara'
