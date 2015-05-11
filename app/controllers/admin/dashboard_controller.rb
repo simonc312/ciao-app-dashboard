@@ -4,7 +4,7 @@ class Admin::DashboardController < ApplicationController
   def index
     #ap params
     @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-02-10", end: "2015-02-20"}, site_ids: "95958"})
-  	@ciaoappuser = Ciaoappuser.filter(user_filter_params).count
+  	@ciaoappuser = Ciaoappuser.filter(user_filter_params)
     @partner = Partner.filter(partner_filter_params)
     @totalRevenue = @partner.sum(:revenue_size)
     @averageRevenue = @totalRevenue / Partner.count #make this reflect the actual subset of partners 
@@ -37,7 +37,7 @@ class Admin::DashboardController < ApplicationController
 
   def update_graph_filters
     #ap params
-    redirect_to admin_dashboard_path(partner_filter_params), :notice => "Graph Bar Filters updated."
+    redirect_to admin_dashboard_path(graph_filter_params), :notice => "Graph Bar Filters updated."
   end
 
   def partner_revenue
@@ -64,7 +64,11 @@ class Admin::DashboardController < ApplicationController
       params.slice(:country_code, :state_id, :gender,:age)
     end
 
+    def graph_filter_params
+      params.slice(:online_channels,:offline_channels,:graph_frequency,:graph_value,:date)
+    end
+
     def partner_filter_params
-      params.slice(:online_channels,:offline_channels,:graph_frequency,:graph_value)
+      params.slice(:offline_channels)
     end
 end

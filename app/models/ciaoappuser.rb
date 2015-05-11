@@ -30,13 +30,14 @@ class Ciaoappuser < ActiveRecord::Base
   scope :state_id, -> (state_id) { where state_id: state_id }
   scope :gender, -> (gender) { gender === "both" ? nil : (where gender: gender) }
   scope :age, -> (age) { where date_of_birth:  (Time.now - age["upper_bound"].to_i.years)..(Time.now - age["lower_bound"].to_i.years) }
-
+  scope :graph_frequency, -> (frequency) { send("group_by_"+frequency.to_s.downcase[0...-2],:created_at) }
+  
   belongs_to :partner, inverse_of: :ciaoappusers
   enum country_code: [:united_states, :china, :brazil, :mexico, :canada]
   enum is_active: [:inactive, :active]
   enum state_id: [:CA, :WA, :NY, :TX]
   enum gender: [:male, :female]
-  enum online_channels: [:facebook_ads, :google_adwords, :opera_ad_network, :fyver_ads]
+  enum online_channels: [:facebook_ads, :google_adwords, :admarvel, :fyver_ads]
 	enum offline_channels: [:grocery_store, :repair_shop, :electronics_store, :discount_store, :other]
 	enum graph_types: [:bar_chart, :pie_chart, :line_chart]
 	enum graph_values: [:total_revenue, :average_revenue, :total_costs, :net_income]

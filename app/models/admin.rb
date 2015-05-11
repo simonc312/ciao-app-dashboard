@@ -15,7 +15,6 @@ class Admin < ActiveRecord::Base
   has_many :ciaoappusers, through: :partners
   has_one :user, as: :roleable, dependent: :destroy
   accepts_nested_attributes_for :user, allow_destroy: true
-  #Report = Struct.new(*(Admin.admarvel_headers.map &:to_sym)); #turn array of strings to symbols then use as arguments
 
   def currentFixedCosts
   	#find the first fixedCosts created this month otherwise create it.

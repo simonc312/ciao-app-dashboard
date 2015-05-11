@@ -1,6 +1,6 @@
 class Partner < ActiveRecord::Base
 	include Filterable
-	#scope :frequency, -> (frequency) { "group_by_"+frequency }
+	scope :graph_frequency, -> (frequency) { send("group_by_"+frequency.to_s.downcase[0...-2],:created_at) }
   has_and_belongs_to_many :admins
   has_many :ciaoappusers, inverse_of: :partner
   has_one :user, as: :roleable, dependent: :destroy
