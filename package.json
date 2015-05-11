@@ -1,0 +1,16 @@
+{
+	"name": "ciao-admin-dashboard",
+	"devDependencies" : {
+		"browserify": "^9.0.8",
+		"browserify-incremental": "^3.0.0",
+		"react-bootstrap-daterangepicker": "~0.2.5"
+
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=0.10"
+	}
+
+
+
+}

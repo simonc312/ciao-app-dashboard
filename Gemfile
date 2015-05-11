@@ -15,6 +15,7 @@ gem 'bootstrap_form'
 gem 'devise'
 gem 'pundit'
 gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
+gem 'browserify-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
