@@ -41,5 +41,8 @@ module RailsDevisePundit
 
     #allow .js.jsx to be transformed by reactify 
     config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\"" 
+
+    #use react extra features
+    config.react.addons = true
   end
 end

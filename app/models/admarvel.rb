@@ -2,6 +2,7 @@ class Admarvel
 
 	BASE_URL = 'http://map.admarvel.com'
 	CACHE_POLICY = lambda { 30.days.ago } 
+	SITE_HEADERS = ["Date", "Advertiser/Ad Network Name", "Campaign Name",	"Site ID",	"Site Name",	"Publisher ID",	"Publisher Name",	"Requests",	"Impressions",	"Fill Rate",	"Clicks",	"CTR",	"eCPM",	"Revenue"]
 
 	attr_reader :type, :date, :site_ids
 
@@ -10,11 +11,7 @@ class Admarvel
 		@date = query[:date]
 		@site_ids = query[:site_ids] 
 	end
-
-	def self.site_headers
-  	["Date", "Advertiser/Ad Network Name", "Campaign Name",	"Site ID",	"Site Name",	"Publisher ID",	"Publisher Name",	"Requests",	"Impressions",	"Fill Rate",	"Clicks",	"CTR",	"eCPM",	"Revenue"]
-  end
-
+	
 	def site_report_url
 		BASE_URL + '/reports?' + {
 			type: type,
