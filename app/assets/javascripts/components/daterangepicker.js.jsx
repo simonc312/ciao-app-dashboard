@@ -1,6 +1,7 @@
 /** $jsx React.DOM */
-var React = require('react');
+React = require('react');
 var ReactDateRangePicker = require('react-bootstrap-daterangepicker');
+alert(ReactDateRangePicker)
 var DateRangePicker = React.createClass({
     render: function () {
         return (

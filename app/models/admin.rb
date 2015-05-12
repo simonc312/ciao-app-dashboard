@@ -26,9 +26,9 @@ class Admin < ActiveRecord::Base
 		url = Admarvel.new(query).site_report_url
 		#only fetch if cache is not fresh 
 		body = ApiRequest.cache(url,Admarvel::CACHE_POLICY) do
+			ap "fetching from admarvel"
 			open(url).read
 		end
-		ap body
 		output_csv = CSV.new(body,:headers => Admarvel::SITE_HEADERS,:header_converters => :symbol, :converters => [:all, :blank_to_nil, :currency_to_int])
 		output_csv = output_csv.to_a[2...-1]
 		output_csv = output_csv.map {|data|

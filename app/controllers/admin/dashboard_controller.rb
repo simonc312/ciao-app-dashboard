@@ -4,8 +4,9 @@ class Admin::DashboardController < ApplicationController
   def index
     #ap params
     @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-02-10", end: "2015-02-20"}, site_ids: "95958"})
-  	@ciaoappuser = Ciaoappuser.filter(user_filter_params)
+  	@ciaoappuser = Ciaoappuser.filter(user_filter_params).filter(params.slice(:graph_frequency)).count
     @partner = Partner.filter(partner_filter_params)
+    @partner_graph = Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
     @totalRevenue = @partner.sum(:revenue_size)
     @averageRevenue = @totalRevenue / Partner.count #make this reflect the actual subset of partners 
     @totalFixedCosts = current_user.roleable.currentFixedCosts()
@@ -65,7 +66,7 @@ class Admin::DashboardController < ApplicationController
     end
 
     def graph_filter_params
-      params.slice(:online_channels,:offline_channels,:graph_frequency,:graph_value,:date)
+      params.slice(:online_channels,:offline_channels,:graph_frequency,:graph_value,:graph_type,:date)
     end
 
     def partner_filter_params

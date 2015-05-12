@@ -6,20 +6,22 @@
 		Value
 		<%= select_tag("graph_value", options_for_select(Ciaoappuser.keep_titleize_graph_values,params[:graph_value])) %>
 		Frequency
-		<%= select_tag("graph_frequency", options_for_select(Ciaoappuser.keep_titleize_graph_frequencies, [3,"Weekly"])) %>
+		<%= select_tag("graph_frequency", options_for_select(Ciaoappuser.keep_titleize_graph_frequencies,params[:graph_frequency])) %>
 		<%= react_component('DateRangePicker', startDate: '4/01/15', endDate:'5/01/15') %>
 		<%= button_tag("Update",class: "btn btn-primary") %>
 		<% end %>
 	</div>
 	<div class="panel-body">
 			<div class="col-md-6">
-				<h4><%= params[:graph_value] ?  params[:graph_value] : "Total Revenue" %> | 
-				<small><%= params[:graph_frequency] ?  params[:graph_frequency] : "Weekly" %></small>
+				<h4><%= params[:graph_value] ?  params[:graph_value] : "Total Revenue" %> 
 				</h4>
-		      <%= params[:graph_type] ? send(params[:graph_type], @partner) : bar_chart(@partner) %>
+		      <%= params[:graph_type] ? send(params[:graph_type].parameterize.underscore, @partner_graph) : bar_chart(@partner_graph) %>
 			</div>
 			<div class="col-md-4">
-				<h4>Ciao App User Sign Up Count</h4>
+				<h4>
+					Ciao App User Sign Up Count | 
+					<small><%= params[:graph_frequency] ?  params[:graph_frequency] : "Weekly" %></small>
+				</h4>
 		      <%= line_chart @ciaoappuser %>
 			</div>
 			<% if true || (params[:online_channels] && params[:online_channels][:admarvel])  %>
