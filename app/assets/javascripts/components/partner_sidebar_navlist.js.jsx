@@ -15,4 +15,4 @@ var PartnerSideBarNavList = React.createClass({
 });
 
 window.PartnerSideBarNavList = PartnerSideBarNavList;
-modules.exports = PartnerSideBarNavList;
+module.exports = PartnerSideBarNavList;

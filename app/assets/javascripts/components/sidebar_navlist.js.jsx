@@ -14,4 +14,4 @@ var SideBarNavList = React.createClass({
 });
 
 window.SideBarNavList = SideBarNavList;
-modules.exports = SideBarNavList;
+module.exports = SideBarNavList;

@@ -2,7 +2,7 @@
 	<div class="sidebar-collapse">    
 
 		<% if current_user.admin? %>
-      <%= react_component("AdminSideBarNavList")%>
+      <%= react_component("AdminSideBarNavList",dashboardPath: admin_dashboard_path)%>
 		<% end %>
 		<% if current_user.partner? %>
 			<%= react_component("PartnerSideBarNavList")%>
