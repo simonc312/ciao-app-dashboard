@@ -22,7 +22,7 @@ class Admin < ActiveRecord::Base
   end
 
   def admarvel_site_report_call(query)
-		output_csv = {}
+		output_csv = []
 		# hand case where date start - date end > 30 days into seperate calls
 		# require date start and end to be valid
 		queries = splitToMaxDateRequests(query,Admarvel::DATE_FORMAT)
@@ -43,8 +43,8 @@ class Admin < ActiveRecord::Base
 
 		#concat all the different output_csv together.
 		output_csv =  output_csv.group_by {|report| report.campaign_name }
-		#ap output_csv
-		return output_csv.each{|key,value| output_csv[key] = value.map{|r| r.revenue}.reduce(:+)} 
+		
+		return output_csv.each{|key,value| output_csv[key] = value.map{|r| r.revenue}.reduce(:+).round(2)} 
 		
 	end
 

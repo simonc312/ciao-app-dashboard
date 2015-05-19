@@ -42,7 +42,7 @@ class Ciaoappuser < ActiveRecord::Base
 	enum graph_types: [:bar_chart, :pie_chart, :line_chart]
 	enum graph_values: [:total_revenue, :average_revenue, :total_costs, :net_income]
 	enum graph_frequency: [:yearly,:monthly,:weekly,:daily]
-
+  enum graph_date: [:last_week, :last_month, :last_quarter, :last_year]
 	def self.method_missing(method_sym, *arguments, &block)
     match = CiaoappuserDynamicMethodFinder.new(method_sym)
     if match.match?

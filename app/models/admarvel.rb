@@ -1,6 +1,6 @@
 class Admarvel
 
-	BASE_URL = 'http://map.admarvel.com'
+	BASE_URL = 'https://map.admarvel.com'
 	CACHE_POLICY = lambda { 30.days.ago }
 	DATE_POLICY = lambda { 30.days.ago } 
 	DATE_FORMAT = '%Y-%m-%d'
