@@ -29,7 +29,7 @@ class Admin < ActiveRecord::Base
 
 		queries.each do |query|
 			url = Admarvel.new(query).site_report_url
-			ap url
+			#ap url
 			#only fetch url_request if cache is not fresh 
 			# careful need to handle fetches if error thrown
 			url_request = lambda { open(url).read }
