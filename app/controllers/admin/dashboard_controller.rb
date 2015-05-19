@@ -3,8 +3,10 @@ class Admin::DashboardController < ApplicationController
   before_filter :ensure_admin!
   def index
     #ap params
-    ap params[:graph_date]
-    @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-01-10", end: "2015-02-20"}, site_ids: "95958"})
+    @duration = (4 ** Ciaoappuser.graph_dates[params[:graph_date].downcase.gsub(" ","_") || "last_week"]).weeks
+    @date_start = @duration.ago.to_date.strftime('%Y-%m-%d')
+    @date_end = Time.now.strftime('%Y-%m-%d')
+    @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: @date_start, end: @date_end}, site_ids: "95958"})
   	@ciaoappuser = Ciaoappuser.filter(user_filter_params).filter(params.slice(:graph_frequency)).count
     @partner = Partner.filter(partner_filter_params)
     @partner_graph = Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
