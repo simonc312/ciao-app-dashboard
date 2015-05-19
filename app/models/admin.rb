@@ -23,20 +23,49 @@ class Admin < ActiveRecord::Base
 
   def admarvel_site_report_call(query)
 		output_csv = {}
-		url = Admarvel.new(query).site_report_url
-		#only fetch if cache is not fresh 
-		body = ApiRequest.cache(url,Admarvel::CACHE_POLICY) do
-			ap "fetching from admarvel"
-			open(url).read
+		# hand case where date start - date end > 30 days into seperate calls
+		# require date start and end to be valid
+		queries = splitToMaxDateRequests(query,Admarvel::DATE_FORMAT)
+
+		queries.each do |query|
+			url = Admarvel.new(query).site_report_url
+			ap url
+			#only fetch url_request if cache is not fresh 
+			# careful need to handle fetches if error thrown
+			url_request = lambda { open(url).read }
+			body = ApiRequest.cache(url,Admarvel::CACHE_POLICY,url_request)
+			new_csv = CSV.new(body,:headers => Admarvel::SITE_HEADERS,:header_converters => :symbol, :converters => [:all, :blank_to_nil, :currency_to_int])
+			new_csv = new_csv.to_a[2...-1]
+			output_csv = output_csv.concat(new_csv.map {|data|
+				AdmarvelReport.new(data)
+			})
 		end
-		output_csv = CSV.new(body,:headers => Admarvel::SITE_HEADERS,:header_converters => :symbol, :converters => [:all, :blank_to_nil, :currency_to_int])
-		output_csv = output_csv.to_a[2...-1]
-		output_csv = output_csv.map {|data|
-			AdmarvelReport.new(data)
-		}
+
+		#concat all the different output_csv together.
 		output_csv =  output_csv.group_by {|report| report.campaign_name }
 		#ap output_csv
 		return output_csv.each{|key,value| output_csv[key] = value.map{|r| r.revenue}.reduce(:+)} 
 		
+	end
+
+	def splitToMaxDateRequests(query,date_format)
+		
+		date_ranges = [];
+		date_start = Date.strptime(query[:date][:start],date_format)
+		date_end = Date.strptime(query[:date][:end],date_format)
+		while((date_end - date_start).days > 30.days)
+			mid_end = date_start + 30.days
+			date_ranges.push({start: date_start.strftime(date_format), end: mid_end.strftime(date_format)})
+			date_start = date_start + 31.days
+		end
+		# add remainder
+		date_ranges.push({start: date_start.strftime(date_format), end: date_end.strftime(date_format)})
+		# save as modified query
+		date_ranges.map do |date|
+			queryCopy = Marshal.load(Marshal.dump(query))
+			queryCopy[:date][:start] = date[:start]
+			queryCopy[:date][:end] = date[:end]
+			queryCopy
+		end
 	end
 end

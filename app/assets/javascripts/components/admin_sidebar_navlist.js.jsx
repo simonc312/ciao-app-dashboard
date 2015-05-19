@@ -6,7 +6,7 @@ var AdminSideBarNavList = React.createClass({
 		
 		return (
 			<SideBarNavList>
-				<NavListLink text= "Dashboard Reports" linkPath= {Routes.admin_dashboard_path()} classes= "active" />
+				<NavListLink text= "Dashboard Reports" linkPath= {this.props.dashboardPath} classes= "active" />
 				<NavListLink text= "Manage Partners" linkPath= "#" />
 				<NavListLink text= "Add New Partner" linkPath= "#" /> 
 			</SideBarNavList>
@@ -16,4 +16,4 @@ var AdminSideBarNavList = React.createClass({
 });
 
 window.AdminSideBarNavList = AdminSideBarNavList;
-modules.exports = AdminSideBarNavList;
+module.exports = AdminSideBarNavList;

@@ -1,7 +1,9 @@
 class Admarvel
 
 	BASE_URL = 'http://map.admarvel.com'
-	CACHE_POLICY = lambda { 30.days.ago } 
+	CACHE_POLICY = lambda { 30.days.ago }
+	DATE_POLICY = lambda { 30.days.ago } 
+	DATE_FORMAT = '%Y-%m-%d'
 	SITE_HEADERS = ["Date", "Advertiser/Ad Network Name", "Campaign Name",	"Site ID",	"Site Name",	"Publisher ID",	"Publisher Name",	"Requests",	"Impressions",	"Fill Rate",	"Clicks",	"CTR",	"eCPM",	"Revenue"]
 
 	attr_reader :type, :date, :site_ids

@@ -3,7 +3,7 @@ class Admin::DashboardController < ApplicationController
   before_filter :ensure_admin!
   def index
     #ap params
-    @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-02-10", end: "2015-02-20"}, site_ids: "95958"})
+    @admarvel_report = current_user.roleable.admarvel_site_report_call({type: "site", date: {start: "2015-01-10", end: "2015-04-20"}, site_ids: "95958"})
   	@ciaoappuser = Ciaoappuser.filter(user_filter_params).filter(params.slice(:graph_frequency)).count
     @partner = Partner.filter(partner_filter_params)
     @partner_graph = Partner.group(:country).sum(:revenue_size).map{|k,v|[Partner.countries.keys[k].titleize,v]}
