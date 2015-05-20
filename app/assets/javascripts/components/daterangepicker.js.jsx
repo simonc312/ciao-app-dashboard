@@ -1,5 +1,5 @@
 /** $jsx React.DOM */
-var ReactDateRangePicker = require('react-bootstrap-daterangepicker');
+/*var ReactDateRangePicker = require('react-bootstrap-daterangepicker');
 var DateRangePicker = React.createClass({
     render: function () {
         return (
@@ -9,4 +9,4 @@ var DateRangePicker = React.createClass({
     }
 });
 window.DateRangePicker = DateRangePicker;
-module.exports = DateRangePicker;
+module.exports = DateRangePicker;*/
