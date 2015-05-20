@@ -5,6 +5,4 @@
 //= require ./components/sidebar_navlist
 //= require ./components/admin_sidebar_navlist
 //= require ./components/partner_sidebar_navlist
-//= require ./components/daterangepicker
 
-//#React = require('react');
