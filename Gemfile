@@ -18,6 +18,7 @@ gem 'react-rails', "~> 1.0"
 gem "browserify-rails", "~> 0.9.1"
 gem 'unicorn'
 gem 'newrelic_rpm'
+gem 'rack-timeout'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
